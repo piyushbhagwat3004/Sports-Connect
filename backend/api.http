@@ -1,0 +1,74 @@
+POST http://localhost:9000/register
+Content-Type: application/json
+
+{
+  "username": "Piyush",
+  "password":"123456",
+  "email":"Piyush@gmail.com",
+  "name":"Piyu"
+}
+
+
+###
+
+POST http://localhost:9000/login
+Content-Type: application/json
+
+{
+  "email":"Piyush@gmail.com",
+  "password":"123456"
+}
+
+###
+POST http://localhost:9000/user_update
+Content-Type: application/json
+
+{
+  "token":"82e25d1fee8f5202774ebeb4d444883b34f1d5a805860b2e2ab29b39dab52679",
+  "username": "stshgber",
+  "password":"stpkjsword",
+  "email":"srdbhggmail.com",
+  "name":"snjhhame"
+}
+
+
+###
+
+GET http://localhost:9000/get_user_and_profile
+Content-Type: application/json
+
+{
+  "token":"82e25d1fee8f5202774ebeb4d444883b34f1d5a805860b2e2ab29b39dab52679"
+}
+
+
+###
+
+POST http://localhost:9000/update_profile_data
+Content-Type: application/json
+
+{
+  "token":"82e25d1fee8f5202774ebeb4d444883b34f1d5a805860b2e2ab29b39dab52679",
+  "bio":"hey i am a kho kho player , Of pict",
+  "currentPost":"hey i am a kho kho  player",
+  "pastWork":[
+    {
+      "company":"pict",
+      "position":"pict",
+      "years":"4+"
+    }
+  ],
+  "education":[
+    {
+      "school":"pict",
+      "degree":"pict",
+      "fieldOfStudy":"2+"
+    }
+  ]
+}
+
+###
+
+
+GET http://localhost:9000/user/get_all_users
+Content-Type: application/json

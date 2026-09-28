@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",         // 👈 required for paths to work
+    "paths": {
+      "@/*": ["src/*"]      // 👈 maps @/ to ./src/
+    }
+  },
+  "include": ["src"]        // 👈 optional: lets VSCode/Next know to look into src
+}
