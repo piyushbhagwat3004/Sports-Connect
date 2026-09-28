@@ -1,0 +1,46 @@
+services:
+  mongodb:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "9000:9000"
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+      - ./backend/uploads:/app/uploads
+    dns:
+      - 8.8.8.8
+      - 8.8.4.4
+    environment:
+      - NODE_ENV=development
+      - MONGO_URI=mongodb://mongodb:27017/aim-gold
+    depends_on:
+      - mongodb
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+      - /app/.next
+    environment:
+      - NODE_ENV=development
+      - INTERNAL_API_URL=http://backend:9000
+      - NEXT_PUBLIC_BASE_URL=http://localhost:9000
+    depends_on:
+      - backend
+
+volumes:
+  mongo-data:

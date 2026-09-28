@@ -1,2 +1,105 @@
-# Sports-Connect
-Sports Connect is a sports networking platform that connects athletes, clubs, teams, and sports enthusiasts. Users can create profiles, showcase achievements, share posts, build connections, and discover upcoming sports events. It aims to create a unified digital ecosystem that empowers the sports community to connect, collaborate, and grow.
+# Aim-Gold
+
+Aim-Gold is a professional web application built with a Node.js/Express backend and a Next.js frontend, featuring user connections, post uploads, comments, likes, profile resume generation, and persistent image uploads.
+
+## Features
+
+- **User Accounts**: Login, Registration, and Profile updates.
+- **Connection Requests**: Send, accept, and manage network connections.
+- **Interactive Feed**: Share posts with text and image attachments.
+- **Likes & Comments**: Support liking posts and commenting on posts.
+- **Resume Builder**: Download profiles as a formatted PDF.
+- **Docker Orchestrated**: Run the entire project using a single command.
+
+---
+
+## Tech Stack
+
+- **Frontend**: Next.js, Redux Toolkit, CSS Modules
+- **Backend**: Node.js, Express, Mongoose, Multer, PDFKit
+- **Database**: MongoDB (Atlas)
+- **Containerization**: Docker & Docker Compose
+
+---
+
+## Getting Started
+
+### Prerequisites
+
+- [Docker Desktop](https://www.docker.com/products/docker-desktop/) installed on your machine.
+- Alternatively, you can run Node.js (v18+) and MongoDB locally if running without Docker.
+
+---
+
+### Running the App with Docker (Recommended)
+
+You can launch the frontend, backend, and set up persistent volumes with a single command from the project root:
+
+```bash
+docker compose up --build
+```
+
+- **Frontend website**: [http://localhost:3000](http://localhost:3000)
+- **Backend API**: [http://localhost:9000](http://localhost:9000)
+
+**Note on Storing Images:**
+When running under Docker Compose, uploaded images are mapped to the host's `./backend/uploads` directory. This ensures your uploaded media is persistent and is not deleted if the container stops or builds.
+
+---
+
+### Running the App Locally (Without Docker)
+
+#### 1. Setup Backend
+1. Go to the backend folder:
+   ```bash
+   cd backend
+   ```
+2. Install packages:
+   ```bash
+   npm install
+   ```
+3. Start the dev server:
+   ```bash
+   npm run dev
+   ```
+
+#### 2. Setup Frontend
+1. Go to the frontend folder:
+   ```bash
+   cd ../frontend
+   ```
+2. Install packages:
+   ```bash
+   npm install
+   ```
+3. Start Next.js development server:
+   ```bash
+   npm run dev
+   ```
+
+---
+
+## Directory Structure
+
+```
+Aim-Gold/
+├── backend/
+│   ├── controllers/      # Route logic (posts, users)
+│   ├── models/           # MongoDB schemas
+│   ├── routes/           # Express routing definition
+│   ├── uploads/          # Local upload directory for posts & profiles
+│   ├── Dockerfile
+│   ├── package.json
+│   └── server.js
+├── frontend/
+│   ├── src/
+│   │   ├── Components/
+│   │   ├── config/       # Redux configurations & client instances
+│   │   ├── layout/       # Standard layouts
+│   │   ├── pages/        # Next.js pages & styling
+│   │   └── styles/
+│   ├── Dockerfile
+│   └── package.json
+├── docker-compose.yml    # Main compose runner
+└── README.md
+```

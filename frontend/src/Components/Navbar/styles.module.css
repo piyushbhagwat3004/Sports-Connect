@@ -1,0 +1,486 @@
+/* Sports-themed Navbar Styles */
+.container {
+  position: relative;
+  width: 100%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.navBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  position: relative;
+  z-index: 100;
+}
+
+/* LEFT SIDE - Logo & Brand */
+.navLeft {
+  display: flex;
+  align-items: center;
+}
+
+.logoContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.logoContainer:hover {
+  transform: scale(1.05);
+}
+
+.logo {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, #ff6b6b, #ffd93d);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.2rem;
+  box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
+}
+
+.brandName {
+  font-size: 1.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.5px;
+}
+
+/* CENTER - Navigation Links */
+.navCenter {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.navLink {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  color: #64748b;
+}
+
+.navLink:hover {
+  background: rgba(102, 126, 234, 0.1);
+  color: #667eea;
+  transform: translateY(-2px);
+}
+
+.navLink.active {
+  background: rgba(102, 126, 234, 0.15);
+  color: #667eea;
+}
+
+.navLink.active::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 4px;
+  background: #667eea;
+  border-radius: 50%;
+}
+
+.navLink i {
+  font-size: 1.1rem;
+}
+
+.navLink span {
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+/* RIGHT SIDE - User Actions */
+.navRight {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+/* Notifications */
+.notificationContainer {
+  position: relative;
+}
+
+.notificationIcon {
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  border: 2px solid rgba(102, 126, 234, 0.2);
+}
+
+.notificationIcon:hover {
+  background: rgba(102, 126, 234, 0.1);
+  border-color: #667eea;
+  transform: scale(1.05);
+}
+
+.notificationBadge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: #ff4757;
+  color: white;
+  font-size: 0.7rem;
+  font-weight: 600;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid white;
+}
+
+.notificationDropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  min-width: 320px;
+  z-index: 1000;
+  margin-top: 0.5rem;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.dropdownHeader {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid #f1f5f9;
+  background: #f8fafc;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dropdownHeader h4 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #334155;
+}
+
+.markAllReadBtn {
+  background: none;
+  border: none;
+  color: #667eea;
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.2s ease;
+}
+
+.markAllReadBtn:hover {
+  color: #4f46e5;
+  text-decoration: underline;
+}
+
+.notificationItem {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1.25rem;
+  border-bottom: 1px solid #f1f5f9;
+  transition: background-color 0.2s ease;
+  cursor: pointer;
+}
+
+.notificationItem:hover {
+  background: #f8fafc;
+}
+
+.unreadItem {
+  background: rgba(102, 126, 234, 0.05);
+}
+
+.emptyNotifications {
+  padding: 1.5rem;
+  text-align: center;
+  color: #64748b;
+  font-size: 0.9rem;
+}
+
+.notificationContentBody {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  width: 100%;
+}
+
+.inviteActions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.35rem;
+}
+
+.acceptInviteBtn, .declineInviteBtn {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.25rem 0.6rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.acceptInviteBtn {
+  background: #667eea;
+  color: white;
+  border: none;
+}
+
+.acceptInviteBtn:hover {
+  background: #5568c9;
+}
+
+.declineInviteBtn {
+  background: white;
+  color: #64748b;
+  border: 1px solid #cbd5e1;
+}
+
+.declineInviteBtn:hover {
+  background: #f1f5f9;
+}
+
+.notificationItem:last-of-type {
+  border-bottom: none;
+}
+
+.notificationItem i {
+  width: 24px;
+  height: 24px;
+  background: rgba(102, 126, 234, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #667eea;
+  font-size: 0.8rem;
+  flex-shrink: 0;
+}
+
+.notificationItem div p {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #334155;
+}
+
+.notificationItem div span {
+  font-size: 0.75rem;
+  color: #64748b;
+}
+
+.viewAllNotifications {
+  padding: 0.75rem 1.25rem;
+  text-align: center;
+  background: #f8fafc;
+  color: #667eea;
+  font-weight: 500;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.viewAllNotifications:hover {
+  background: #e2e8f0;
+}
+
+/* User Profile */
+.userProfile {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.userProfile:hover {
+  transform: scale(1.02);
+}
+
+.userAvatar {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1rem;
+  border: 2px solid white;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.userInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.userName {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #334155;
+  line-height: 1.2;
+}
+
+.userRole {
+  font-size: 0.75rem;
+  color: #64748b;
+  line-height: 1.2;
+}
+
+/* Settings */
+.settingsContainer {
+  position: relative;
+}
+
+.settingsIcon {
+  width: 32px;
+  height: 32px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(102, 126, 234, 0.2);
+}
+
+.settingsIcon:hover {
+  background: rgba(102, 126, 234, 0.1);
+  border-color: #667eea;
+}
+
+.settingsCard {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  min-width: 220px;
+  z-index: 1000;
+  margin-top: 0.5rem;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.settingsOption {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.875rem 1.25rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.settingsOption:hover {
+  background: #f8fafc;
+}
+
+.settingsOption:last-child {
+  border-bottom: none;
+}
+
+.settingsOption i {
+  width: 18px;
+  color: #64748b;
+  font-size: 0.9rem;
+}
+
+.settingsOption span {
+  font-size: 0.9rem;
+  color: #334155;
+  font-weight: 500;
+}
+
+.settingsDivider {
+  height: 1px;
+  background: #e2e8f0;
+  margin: 0.5rem 0;
+}
+
+/* Logout specific styling */
+.settingsOption:last-child:hover {
+  background: #fef2f2;
+}
+
+.settingsOption:last-child:hover i,
+.settingsOption:last-child:hover span {
+  color: #dc2626;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .navCenter {
+    gap: 1rem;
+  }
+  
+  .navLink span {
+    display: none;
+  }
+  
+  .navLink {
+    padding: 0.5rem;
+    min-width: 40px;
+    height: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .navBar {
+    padding: 1rem;
+  }
+  
+  .navCenter {
+    display: none;
+  }
+  
+  .userInfo {
+    display: none;
+  }
+  
+  .brandName {
+    font-size: 1.2rem;
+  }
+  
+  .navRight {
+    gap: 1rem;
+  }
+}

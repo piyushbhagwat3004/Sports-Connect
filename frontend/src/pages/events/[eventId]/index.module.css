@@ -1,0 +1,617 @@
+.page { padding: 0 0 60px; max-width: 1100px; margin: 0 auto; }
+/* ── Loading / center ───────────────────────────────────────── */
+.center {
+  display: flex; flex-direction: column; align-items: center;
+  justify-content: center; min-height: 60vh; gap: 16px; color: #94a3b8;
+}
+.spinner {
+  width: 44px; height: 44px;
+  border: 3px solid rgba(99,102,241,0.2);
+  border-top-color: #6366f1;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── Header ─────────────────────────────────────────────────── */
+.header {
+  position: relative;
+  border-radius: 0 0 24px 24px;
+  overflow: hidden;
+  margin-bottom: 16px;
+  min-height: 200px;
+}
+.hasCover .coverImg {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  filter: brightness(0.35);
+}
+.headerOverlay {
+  position: relative;
+  background: linear-gradient(135deg, rgba(30,27,75,0.94) 0%, rgba(76,29,149,0.88) 100%);
+  padding: 28px 28px 20px;
+}
+.headerContent { display: flex; justify-content: space-between; align-items: flex-start; gap: 20px; flex-wrap: wrap; }
+.headerLeft { flex: 1; min-width: 220px; }
+.headerRight { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+
+.sportChips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+.chip {
+  background: rgba(167,139,250,0.25); color: #c4b5fd;
+  border: 1px solid rgba(167,139,250,0.4);
+  border-radius: 20px; padding: 3px 12px;
+  font-size: 0.78rem; font-weight: 700;
+}
+.eventTitle { font-size: 1.9rem; font-weight: 800; color: #f1f5f9; margin: 0 0 6px; line-height: 1.2; }
+.eventDesc  { color: #c4b5fd; font-size: 0.9rem; margin: 0 0 8px; max-width: 500px; }
+.eventDates { color: #a5b4fc; font-size: 0.85rem; margin: 0; }
+
+.hostAvatar { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; border: 3px solid #818cf8; flex-shrink: 0; }
+.hostLabel  { color: #a5b4fc; font-size: 0.72rem; margin: 0; }
+.hostName   { color: #fff; font-weight: 700; font-size: 0.95rem; margin: 2px 0 0; }
+.followerBadge {
+  background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 10px; padding: 6px 12px;
+  color: #e2e8f0; font-size: 0.85rem; font-weight: 600;
+}
+.followerBadge span { font-size: 0.72rem; color: #94a3b8; margin-left: 4px; }
+.hostBadge {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  color: #fff; border-radius: 8px; padding: 4px 12px;
+  font-size: 0.78rem; font-weight: 800; letter-spacing: 0.05em;
+}
+
+.keyBadge {
+  margin-top: 14px;
+  background: rgba(255,255,255,0.07); border: 1px dashed rgba(245,158,11,0.5);
+  border-radius: 10px; padding: 10px 16px; color: #fde68a;
+  font-size: 0.88rem; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+}
+.keyBadge strong { font-family: 'Courier New', monospace; font-size: 1.1rem; letter-spacing: 0.14em; }
+.keyHint { color: #94a3b8; font-size: 0.78rem; }
+
+.joinBanner {
+  margin-top: 14px; display: flex; align-items: center; justify-content: space-between;
+  gap: 12px; flex-wrap: wrap;
+  background: rgba(99,102,241,0.12); border: 1px solid rgba(99,102,241,0.3);
+  border-radius: 12px; padding: 12px 16px; color: #c7d2fe; font-size: 0.88rem;
+}
+.joinBannerBtn {
+  background: linear-gradient(135deg, #6366f1, #4f46e5);
+  color: #fff; border: none; border-radius: 10px;
+  padding: 8px 20px; font-weight: 700; font-size: 0.85rem;
+  cursor: pointer; white-space: nowrap; transition: opacity 0.15s;
+}
+.joinBannerBtn:hover { opacity: 0.85; }
+
+/* ── Host Control Panel ─────────────────────────────────────── */
+.hostPanel {
+  background: linear-gradient(135deg, rgba(245,158,11,0.08), rgba(217,119,6,0.06));
+  border: 1px solid rgba(245,158,11,0.25);
+  border-radius: 16px; padding: 16px 20px; margin-bottom: 16px;
+}
+.hostPanelTitle {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 12px;
+  font-size: 0.88rem; font-weight: 700; color: #fbbf24;
+}
+.hostPanelSub { color: #94a3b8; font-size: 0.78rem; font-weight: 400; }
+.hostPanelActions { display: flex; gap: 10px; flex-wrap: wrap; }
+
+.hostBtn {
+  background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.15);
+  color: #e2e8f0; border-radius: 10px; padding: 9px 18px;
+  font-size: 0.88rem; font-weight: 700; cursor: pointer;
+  transition: all 0.15s; white-space: nowrap;
+}
+.hostBtn:hover { background: rgba(255,255,255,0.13); border-color: rgba(255,255,255,0.3); }
+
+.hostBtnMatch {
+  background: rgba(99,102,241,0.15) !important;
+  border-color: rgba(99,102,241,0.4) !important;
+  color: #818cf8 !important;
+}
+.hostBtnMatch:hover { background: rgba(99,102,241,0.25) !important; }
+
+.hostBtnPhoto {
+  background: rgba(236,72,153,0.12) !important;
+  border-color: rgba(236,72,153,0.35) !important;
+  color: #f9a8d4 !important;
+}
+.hostBtnPhoto:hover { background: rgba(236,72,153,0.22) !important; }
+
+.hostGuide {
+  color: #94a3b8; font-size: 0.8rem; margin: 10px 0 0;
+  border-top: 1px solid rgba(255,255,255,0.06); padding-top: 10px;
+}
+
+/* ── Sport tabs ─────────────────────────────────────────────── */
+.sportTabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+.sportTab {
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);
+  color: #94a3b8; border-radius: 10px; padding: 7px 18px;
+  font-size: 0.88rem; font-weight: 600; cursor: pointer; transition: all 0.15s;
+}
+.sportTabActive { background: rgba(99,102,241,0.2) !important; border-color: #6366f1 !important; color: #818cf8 !important; }
+
+/* ── Tab bar ────────────────────────────────────────────────── */
+.tabBar {
+  display: flex; gap: 4px; flex-wrap: wrap;
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px; padding: 6px; margin-bottom: 20px;
+}
+.tab {
+  flex: 1; min-width: fit-content;
+  background: transparent; border: none;
+  color: #64748b; padding: 9px 16px; border-radius: 10px;
+  font-size: 0.88rem; font-weight: 600; cursor: pointer;
+  transition: all 0.15s; white-space: nowrap;
+}
+.tab:hover { color: #94a3b8; background: rgba(255,255,255,0.05); }
+.tabActive { background: #6366f1 !important; color: #fff !important; }
+
+/* ── Tab content ────────────────────────────────────────────── */
+.tabContent { animation: fadeIn 0.2s ease; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; } }
+
+.sectionTitle { color: #e2e8f0; font-size: 1.1rem; font-weight: 700; margin: 0 0 16px; }
+
+.empty {
+  text-align: center; padding: 50px 20px; color: #64748b; font-size: 0.95rem;
+  border: 1px dashed rgba(255,255,255,0.1); border-radius: 14px; line-height: 1.6;
+}
+
+.actionBtn {
+  background: linear-gradient(135deg, #6366f1, #4f46e5);
+  color: #fff; border: none; padding: 8px 18px; border-radius: 10px;
+  font-size: 0.85rem; font-weight: 700; cursor: pointer; transition: opacity 0.15s;
+  white-space: nowrap;
+}
+.actionBtn:hover { opacity: 0.85; }
+
+.formMsg {
+  color: #a5b4fc; font-size: 0.85rem; margin: 0;
+  padding: 8px 12px; background: rgba(99,102,241,0.1); border-radius: 8px;
+}
+
+/* ── Round label ────────────────────────────────────────────── */
+.roundLabel {
+  color: #818cf8; font-size: 0.78rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.08em;
+  margin: 20px 0 8px; padding-left: 4px;
+}
+
+/* ── Match card ─────────────────────────────────────────────── */
+.matchCard {
+  background: linear-gradient(145deg, #1e293b, #0f172a);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px; padding: 16px; margin-bottom: 12px;
+  transition: border-color 0.15s;
+}
+.matchCard:hover { border-color: rgba(99,102,241,0.3); }
+.matchCardLive {
+  border-color: rgba(34,197,94,0.4) !important;
+  box-shadow: 0 0 20px rgba(34,197,94,0.08);
+  animation: pulseBorder 2s ease-in-out infinite;
+}
+@keyframes pulseBorder {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(34,197,94,0.15); }
+  50%       { box-shadow: 0 0 16px 4px rgba(34,197,94,0.2); }
+}
+
+.matchTop { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; flex-wrap: wrap; }
+.matchRound {
+  background: rgba(99,102,241,0.15); color: #818cf8; border-radius: 6px;
+  padding: 2px 8px; font-size: 0.75rem; font-weight: 700;
+}
+.matchStatus { font-size: 0.8rem; font-weight: 700; }
+.matchDate, .matchVenue { color: #64748b; font-size: 0.78rem; }
+
+.matchBody { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.matchTeam { display: flex; align-items: center; gap: 8px; flex: 1; min-width: 0; }
+.matchTeamRight { justify-content: flex-end; flex-direction: row-reverse; }
+.matchTeamName { font-size: 1rem; font-weight: 700; color: #e2e8f0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.winnerName { color: #4ade80 !important; }
+.teamDot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
+
+.scoreDisplay { text-align: center; flex-shrink: 0; min-width: 80px; }
+.vsText { color: #475569; font-weight: 800; font-size: 1.1rem; }
+.scoreText { color: #f1f5f9; font-size: 1.7rem; font-weight: 900; font-family: 'Courier New', monospace; }
+.scoreTextLive { color: #4ade80; }
+
+/* ── Score update panel ─────────────────────────────────────── */
+.scoreUpdatePanel {
+  margin-top: 14px; padding-top: 14px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.scoreUpdateLabel { color: #94a3b8; font-size: 0.78rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 10px; }
+.scoreInputRow { display: flex; align-items: flex-end; gap: 10px; margin-bottom: 10px; flex-wrap: wrap; }
+.scoreInputGroup { display: flex; flex-direction: column; gap: 4px; flex: 1; min-width: 80px; }
+.scoreInputTeam { color: #94a3b8; font-size: 0.75rem; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.scoreInputGroup input {
+  background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 10px; color: #f1f5f9; padding: 10px 12px;
+  font-size: 1.1rem; font-weight: 700; text-align: center; outline: none;
+  transition: border-color 0.15s; width: 100%; box-sizing: border-box;
+}
+.scoreInputGroup input:focus { border-color: #6366f1; }
+.scoreSep { color: #64748b; font-weight: 900; font-size: 1.2rem; padding-bottom: 10px; }
+.scoreUpdateBtns { display: flex; gap: 8px; }
+.liveBtn {
+  flex: 1; background: rgba(34,197,94,0.15); border: 1px solid rgba(34,197,94,0.4);
+  color: #4ade80; border-radius: 10px; padding: 9px 14px;
+  font-size: 0.85rem; font-weight: 700; cursor: pointer; transition: background 0.15s;
+}
+.liveBtn:hover { background: rgba(34,197,94,0.25); }
+.ftBtn {
+  flex: 1; background: rgba(245,158,11,0.15); border: 1px solid rgba(245,158,11,0.4);
+  color: #fbbf24; border-radius: 10px; padding: 9px 14px;
+  font-size: 0.85rem; font-weight: 700; cursor: pointer; transition: background 0.15s;
+}
+.ftBtn:hover { background: rgba(245,158,11,0.25); }
+.scoreFeedback { color: #a5b4fc; font-size: 0.82rem; margin: 8px 0 0; }
+
+.winnerBanner {
+  margin-top: 10px; padding: 8px 12px;
+  background: rgba(74,222,128,0.08); border: 1px solid rgba(74,222,128,0.2);
+  border-radius: 8px; color: #4ade80; font-size: 0.85rem; text-align: center;
+}
+
+/* ── Bracket ────────────────────────────────────────────────── */
+.bracket { display: flex; gap: 24px; overflow-x: auto; padding-bottom: 12px; }
+.bracketRound { min-width: 200px; display: flex; flex-direction: column; gap: 16px; }
+.bracketRoundTitle {
+  color: #818cf8; font-size: 0.78rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.08em; text-align: center; margin: 0 0 6px;
+}
+.bracketMatch {
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 12px; overflow: hidden; transition: border-color 0.15s;
+}
+.bracketMatchDone { border-color: rgba(245,158,11,0.4); }
+.bracketTeam { display: flex; align-items: center; gap: 8px; padding: 10px 12px; }
+.bracketTeam span:nth-child(2) { flex: 1; color: #e2e8f0; font-size: 0.88rem; font-weight: 600; }
+.bracketWinner { background: rgba(74,222,128,0.1); }
+.bracketWinner span:nth-child(2) { color: #4ade80 !important; }
+.bracketTeamColor { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+.bracketScore { color: #f1f5f9; font-weight: 800; font-size: 1rem; font-family: monospace; }
+.bracketDivider { height: 1px; background: rgba(255,255,255,0.06); }
+.bracketStatus {
+  text-align: center; padding: 4px; font-size: 0.7rem; color: #64748b;
+  font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em;
+}
+
+/* ── Standings ──────────────────────────────────────────────── */
+.tieBreakNote { color: #64748b; font-size: 0.78rem; margin: -8px 0 14px; font-style: italic; }
+.tableWrap { overflow-x: auto; }
+.table {
+  width: 100%; border-collapse: collapse;
+  background: linear-gradient(145deg, #1e293b, #0f172a);
+  border-radius: 14px; overflow: hidden;
+}
+.table th {
+  background: rgba(99,102,241,0.15); color: #818cf8;
+  font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em;
+  padding: 11px 10px; text-align: center;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.table th:nth-child(2) { text-align: left; padding-left: 14px; }
+.table td { padding: 10px; text-align: center; color: #cbd5e1; font-size: 0.9rem; border-bottom: 1px solid rgba(255,255,255,0.04); }
+.table tr:last-child td { border-bottom: none; }
+.advanceRow { background: rgba(74,222,128,0.04); }
+.advanceRow td { color: #e2e8f0; }
+.teamCell { display: flex !important; align-items: center; gap: 8px; text-align: left !important; padding-left: 14px !important; }
+.teamDot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; display: inline-block; }
+.advanceBadge { color: #4ade80; font-weight: 800; font-size: 0.85rem; }
+.gdPos { color: #4ade80; font-weight: 700; }
+.gdNeg { color: #f87171; font-weight: 700; }
+.ptsCell { color: #f1f5f9 !important; font-weight: 800 !important; font-size: 1rem !important; }
+.advanceNote { color: #4ade80; font-size: 0.8rem; margin: 8px 0 0; text-align: right; }
+
+/* ── Players ────────────────────────────────────────────────── */
+.teamGrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 14px; }
+.teamCard {
+  background: linear-gradient(145deg, #1e293b, #0f172a);
+  border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; overflow: hidden;
+  transition: transform 0.15s, border-color 0.15s;
+}
+.teamCard:hover { transform: translateY(-2px); border-color: rgba(99,102,241,0.25); }
+.teamCardHeader {
+  padding: 14px 16px; display: flex; align-items: center;
+  justify-content: space-between;
+}
+.teamCardName { color: #fff; font-weight: 800; font-size: 1rem; text-shadow: 0 2px 8px rgba(0,0,0,0.4); }
+.teamPlayerCount { color: rgba(255,255,255,0.6); font-size: 0.75rem; font-weight: 600; }
+.teamCardBody { padding: 12px 16px; }
+.playerList { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 6px; }
+.playerItem { display: flex; align-items: center; gap: 8px; color: #cbd5e1; font-size: 0.88rem; }
+.playerNum { background: rgba(255,255,255,0.08); border-radius: 4px; padding: 1px 6px; font-size: 0.72rem; color: #64748b; font-weight: 700; }
+.noPlayers { color: #475569; font-size: 0.85rem; text-align: center; margin: 8px 0; }
+
+/* ── Calendar ───────────────────────────────────────────────── */
+.calendarGrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 10px; }
+.calDay {
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px; padding: 12px; min-height: 90px;
+}
+.calDayActive { border-color: rgba(99,102,241,0.4); background: rgba(99,102,241,0.08); }
+.calDayHeader { display: flex; flex-direction: column; align-items: center; margin-bottom: 8px; }
+.calDayName { font-size: 0.68rem; color: #64748b; text-transform: uppercase; letter-spacing: 0.05em; }
+.calDayNum  { font-size: 1.4rem; font-weight: 800; color: #e2e8f0; line-height: 1; }
+.calDayMonth { font-size: 0.68rem; color: #94a3b8; }
+.calMatch { background: rgba(99,102,241,0.15); border-radius: 6px; padding: 4px 6px; margin-top: 4px; }
+.calMatchSport { display: block; font-size: 0.63rem; color: #818cf8; font-weight: 700; text-transform: uppercase; }
+.calMatchTeams { font-size: 0.7rem; color: #c7d2fe; display: block; }
+.calLive { display: inline-block; background: #22c55e; color: #fff; border-radius: 4px; padding: 1px 5px; font-size: 0.6rem; font-weight: 700; margin-top: 2px; }
+.calNoMatch { color: #475569; font-size: 0.75rem; text-align: center; margin: 8px 0 0; }
+
+/* ── Photos ─────────────────────────────────────────────────── */
+.photoUploadForm {
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px; padding: 14px 16px; margin-bottom: 20px;
+}
+.photoFileLabel {
+  background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.35);
+  color: #818cf8; border-radius: 10px; padding: 8px 14px;
+  font-size: 0.85rem; font-weight: 600; cursor: pointer; white-space: nowrap;
+  transition: background 0.15s;
+}
+.photoFileLabel:hover { background: rgba(99,102,241,0.25); }
+.captionInput {
+  flex: 1; min-width: 150px;
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 10px; color: #f1f5f9; padding: 8px 12px; font-size: 0.88rem; outline: none;
+}
+.photoGrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; }
+.photoCard {
+  background: linear-gradient(145deg, #1e293b, #0f172a);
+  border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; overflow: hidden;
+  transition: transform 0.2s, border-color 0.2s;
+}
+.photoCard:hover { transform: translateY(-3px); border-color: rgba(99,102,241,0.3); }
+.photoImg { width: 100%; height: 180px; object-fit: cover; display: block; }
+.photoCaption { color: #cbd5e1; font-size: 0.85rem; padding: 10px 12px 0; margin: 0; }
+.photoMeta { display: flex; align-items: center; justify-content: space-between; padding: 8px 12px 12px; }
+.likeBtn { background: none; border: none; color: #f87171; font-size: 0.88rem; font-weight: 600; cursor: pointer; padding: 0; transition: transform 0.1s; }
+.likeBtn:hover { transform: scale(1.2); }
+.photoDate { color: #475569; font-size: 0.75rem; }
+
+/* ── Modals ─────────────────────────────────────────────────── */
+.overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.72);
+  backdrop-filter: blur(6px); z-index: 1000;
+  display: flex; align-items: center; justify-content: center; padding: 20px;
+}
+.modal {
+  background: #1e293b; border: 1px solid rgba(99,102,241,0.3);
+  border-radius: 20px; width: 100%; max-width: 480px;
+  max-height: 90vh; overflow-y: auto; padding: 28px;
+  box-shadow: 0 24px 64px rgba(0,0,0,0.6);
+}
+.modalHeader { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+.modalHeader h2 { color: #f1f5f9; font-size: 1.1rem; font-weight: 700; margin: 0; }
+.closeBtn {
+  background: rgba(255,255,255,0.07); border: none; color: #94a3b8;
+  width: 30px; height: 30px; border-radius: 8px; cursor: pointer; font-size: 1rem;
+  display: flex; align-items: center; justify-content: center; transition: background 0.15s;
+}
+.closeBtn:hover { background: rgba(255,255,255,0.15); }
+
+.form { display: flex; flex-direction: column; gap: 12px; }
+.form label { color: #94a3b8; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
+.form input, .form select, .form textarea {
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 10px; color: #f1f5f9; padding: 10px 14px;
+  font-size: 0.9rem; outline: none; width: 100%; box-sizing: border-box;
+  transition: border-color 0.15s;
+}
+.form input:focus, .form select:focus { border-color: #6366f1; }
+.form select option { background: #1e293b; }
+
+.colorRow { display: flex; align-items: center; gap: 12px; }
+.colorRow input[type=color] { width: 48px; height: 40px; border-radius: 8px; cursor: pointer; padding: 2px; border: 1px solid rgba(255,255,255,0.12); background: transparent; }
+
+.submitBtn {
+  background: linear-gradient(135deg, #6366f1, #4f46e5);
+  color: #fff; border: none; padding: 13px; border-radius: 12px;
+  font-weight: 700; font-size: 1rem; cursor: pointer; margin-top: 4px;
+  box-shadow: 0 4px 16px rgba(99,102,241,0.4); transition: opacity 0.15s, transform 0.15s;
+}
+.submitBtn:hover { opacity: 0.9; transform: translateY(-1px); }
+.submitBtn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* ── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .headerContent { flex-direction: column; }
+  .headerRight { justify-content: flex-start; }
+  .tabBar { gap: 2px; }
+  .tab { font-size: 0.78rem; padding: 8px 10px; }
+  .matchBody { flex-direction: column; gap: 8px; }
+  .matchTeamRight { flex-direction: row; }
+  .scoreDisplay { order: -1; }
+  .bracket { flex-direction: column; }
+  .photoGrid { grid-template-columns: 1fr 1fr; }
+  .teamGrid { grid-template-columns: 1fr 1fr; }
+  .scoreInputRow { gap: 6px; }
+}
+@media (max-width: 480px) {
+  .photoGrid  { grid-template-columns: 1fr; }
+  .teamGrid   { grid-template-columns: 1fr; }
+  .calendarGrid { grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); }
+  .hostPanelActions { flex-direction: column; }
+  .hostBtn { width: 100%; text-align: center; }
+  .scoreUpdateBtns { flex-direction: column; }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   SPORT-SPECIFIC SCORE DISPLAYS & EDITORS
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── Period pill shown in match header ────────────────────── */
+.periodPill {
+  background: rgba(99,102,241,0.18); color: #818cf8;
+  border: 1px solid rgba(99,102,241,0.35);
+  border-radius: 6px; padding: 2px 8px;
+  font-size: 0.73rem; font-weight: 700;
+}
+
+/* ── Scheduled "VS" layout ────────────────────────────────── */
+.scheduledBody {
+  display: flex; align-items: center; justify-content: center;
+  gap: 10px; padding: 18px 0; flex-wrap: wrap;
+}
+
+/* ── Football HT badge ────────────────────────────────────── */
+.htBadge {
+  font-size: 0.75rem; color: #94a3b8;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 6px; padding: 2px 8px; margin-top: 4px;
+  display: inline-block;
+}
+
+/* ── Cricket display ──────────────────────────────────────── */
+.cricketDisplay {
+  padding: 12px 0; display: flex; flex-direction: column; gap: 10px;
+}
+.inningsBadge {
+  background: rgba(245,158,11,0.15); color: #fbbf24;
+  border: 1px solid rgba(245,158,11,0.3);
+  border-radius: 6px; padding: 2px 10px;
+  font-size: 0.73rem; font-weight: 700;
+  display: inline-block; margin-bottom: 4px;
+}
+.cricketRow {
+  display: flex; align-items: center; justify-content: space-between;
+  background: rgba(255,255,255,0.04); border-radius: 10px; padding: 10px 14px;
+}
+.cricketTeamInfo { display: flex; align-items: center; gap: 8px; }
+.battingPill {
+  background: rgba(34,197,94,0.15); color: #4ade80;
+  border: 1px solid rgba(34,197,94,0.3); border-radius: 6px;
+  padding: 2px 8px; font-size: 0.72rem; font-weight: 700;
+}
+.cricketRuns {
+  font-size: 1.25rem; font-weight: 800; color: #f1f5f9;
+  font-family: 'Courier New', monospace;
+}
+.cricketRuns small { color: #94a3b8; font-size: 0.75rem; font-weight: 400; }
+
+/* ── Basketball display ───────────────────────────────────── */
+.basketballDisplay { display: flex; flex-direction: column; gap: 8px; padding: 8px 0; }
+.quartersRow {
+  display: flex; gap: 6px; flex-wrap: wrap; justify-content: center;
+  padding-bottom: 8px; border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.qtrCell {
+  display: flex; flex-direction: column; align-items: center; gap: 2px;
+  background: rgba(99,102,241,0.08); border: 1px solid rgba(99,102,241,0.2);
+  border-radius: 8px; padding: 6px 10px; min-width: 54px;
+}
+.qtrLabel { font-size: 0.68rem; color: #818cf8; font-weight: 700; text-transform: uppercase; }
+.qtrScore { font-size: 0.9rem; font-weight: 700; color: #e2e8f0; font-family: monospace; }
+
+/* ── Sets display ─────────────────────────────────────────── */
+.setsDisplay { padding: 10px 0; display: flex; flex-direction: column; gap: 8px; }
+.setsHeader {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+}
+.setsCells { display: flex; gap: 6px; flex-wrap: wrap; }
+.setCell {
+  display: flex; align-items: center; gap: 3px;
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px; padding: 5px 8px;
+}
+.setWon  { color: #4ade80; font-weight: 800; font-size: 1rem; }
+.setLost { color: #94a3b8; font-weight: 600; font-size: 1rem; }
+.setDash { color: #475569; font-size: 0.85rem; margin: 0 1px; }
+.setsTotals { color: #94a3b8; font-size: 0.82rem; text-align: center; padding-top: 4px; }
+
+/* ═══ EDITOR (HOST) STYLES ═══════════════════════════════ */
+
+/* Shared row for period/innings selector */
+.editorRow {
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 2px;
+}
+.editorRowLabel {
+  color: #94a3b8; font-size: 0.78rem; font-weight: 600;
+  white-space: nowrap; min-width: 90px;
+}
+.periodSelect {
+  flex: 1; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 8px; color: #f1f5f9; padding: 7px 10px; font-size: 0.85rem;
+  outline: none; min-width: 120px;
+}
+.periodSelect option { background: #1e293b; }
+
+/* Football HT inputs */
+.htInputs { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.htInput {
+  width: 60px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 8px; color: #f1f5f9; padding: 7px; font-size: 0.9rem;
+  text-align: center; outline: none;
+}
+
+/* Cricket editor */
+.cricketEditorBlock {
+  background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 10px; padding: 10px 12px; display: flex; flex-direction: column; gap: 8px;
+}
+.cricketEditorTeam {
+  display: flex; align-items: center; gap: 6px;
+  color: #e2e8f0; font-size: 0.88rem; font-weight: 700;
+}
+.cricketEditorInputs { display: flex; align-items: flex-end; gap: 6px; flex-wrap: wrap; }
+.cricketEditorField { display: flex; flex-direction: column; gap: 3px; }
+.cricketEditorField label { color: #64748b; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; }
+.cricketEditorField input {
+  width: 64px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 8px; color: #f1f5f9; padding: 7px; font-size: 0.9rem;
+  text-align: center; outline: none; box-sizing: border-box;
+}
+.cricketSlash { color: #475569; font-size: 1.2rem; padding-bottom: 4px; }
+
+/* Basketball quarter editor */
+.quartersEditorGrid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 8px; margin-bottom: 4px;
+}
+.qtrEditorCell {
+  display: flex; align-items: center; gap: 4px;
+  background: rgba(99,102,241,0.08); border: 1px solid rgba(99,102,241,0.2);
+  border-radius: 8px; padding: 8px;
+}
+.qtrEditorLabel { color: #818cf8; font-size: 0.75rem; font-weight: 700; min-width: 24px; }
+.qtrEditorInput {
+  width: 44px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 6px; color: #f1f5f9; padding: 5px; font-size: 0.9rem;
+  text-align: center; outline: none;
+}
+.qtrEditorSep { color: #475569; font-weight: 700; }
+
+/* Auto-calc summary row */
+.autoCalcRow {
+  color: #64748b; font-size: 0.82rem; text-align: center;
+  padding: 6px; background: rgba(255,255,255,0.03); border-radius: 8px; margin-bottom: 4px;
+}
+.autoCalcRow strong { color: #f1f5f9; }
+
+/* Sets editor */
+.setEditorRow {
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 4px;
+}
+.setEditorLabel { color: #94a3b8; font-size: 0.78rem; font-weight: 700; min-width: 44px; }
+.setEditorInput {
+  width: 52px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 8px; color: #f1f5f9; padding: 7px; font-size: 0.95rem;
+  text-align: center; outline: none;
+}
+.setWinHint { color: #4ade80; font-size: 0.75rem; font-weight: 600; white-space: nowrap; }
+.addSetBtn {
+  background: rgba(99,102,241,0.12); border: 1px dashed rgba(99,102,241,0.35);
+  color: #818cf8; border-radius: 8px; padding: 6px 14px;
+  font-size: 0.82rem; font-weight: 700; cursor: pointer; margin: 4px 0;
+  transition: background 0.15s;
+}
+.addSetBtn:hover { background: rgba(99,102,241,0.22); }
+
